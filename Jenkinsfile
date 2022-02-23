@@ -22,32 +22,13 @@ pipeline {
             }
         }
         stage('Deliver') {
-            steps {
+            steps{
                 sh 'mvn jar:jar install:install help:evaluate -Dexpression=project.name'
-            }
-            steps {
                 sh 'NAME=`mvn help:evaluate -Dexpression=project.name'
-            }
-            steps {
-                sh 'VERSION=`mvn help:evaluate -Dexpression=project.version'
-            }
-            steps {
+                sh 'VERSION=`mvn help:evaluate -Dexpression=project.version'            }
                 sh 'java -jar target/${NAME}-${VERSION}.jar'
             }
-
         }
     
     }
-}
-
-node {
-  stage('SCM') {
-    checkout scm
-  }
-  stage('SonarQube Analysis') {
-    def mvn = tool 'Default Maven';
-    withSonarQubeEnv() {
-      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=simple-java-maven-app"
-    }
-  }
 }
