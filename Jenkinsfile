@@ -26,8 +26,8 @@ pipeline {
                 sh 'mvn jar:jar install:install help:evaluate -Dexpression=project.name'
                 sh 'NAME=`mvn help:evaluate -Dexpression=project.name`'
                 sh 'VERSION=`mvn help:evaluate -Dexpression=project.version`'
-                sh 'set -x'
                 sh 'cd target'
+                sh 'whoami'
                 sh 'java -jar my-app-1.0-SNAPSHOT.jar'
             }
         }    
