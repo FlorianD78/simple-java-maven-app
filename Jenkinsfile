@@ -23,12 +23,10 @@ pipeline {
         }
         stage('Deliver') {
             steps{
+                sh 'mvn dependency:resolve'
                 sh 'mvn jar:jar install:install help:evaluate -Dexpression=project.name'
-                sh 'NAME=`mvn help:evaluate -Dexpression=project.name`'
-                sh 'VERSION=`mvn help:evaluate -Dexpression=project.version`'
-                sh 'cd target && pwd'
-                sh 'pwd'
                 sh 'java -jar target/my-app-1.0-SNAPSHOT.jar'
+                sh 'echo **************Demarrage de SONARCLOUD**************'
                 sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=FlorianD78_simple-java-maven-app'
             }
         }    
