@@ -29,6 +29,7 @@ pipeline {
                 sh 'cd target && pwd'
                 sh 'pwd'
                 sh 'java -jar target/my-app-1.0-SNAPSHOT.jar'
+                sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=java -Dsonar.host.url=http://172.19.0.5:9000 -Dsonar.login=607e4aa59cbac2a37f143aa0ba1d5195863114a2'
             }
         }    
     }
