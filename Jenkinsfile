@@ -26,13 +26,13 @@ pipeline {
                 sh 'mvn jar:jar install:install help:evaluate -Dexpression=project.name'
             }
             steps {
-                sh 'NAME=`mvn help:evaluate -Dexpression=project.name | grep "^[^\[]"`'
+                sh 'NAME=`mvn help:evaluate -Dexpression=project.name | grep "^[^\[]"'
             }
             steps {
-                'VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`'
+                sh 'VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"'
             }
             steps {
-                'java -jar target/${NAME}-${VERSION}.jar'
+                sh 'java -jar target/${NAME}-${VERSION}.jar'
             }
 
         }
