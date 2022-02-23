@@ -28,7 +28,7 @@ pipeline {
                 sh 'VERSION=`mvn help:evaluate -Dexpression=project.version`'
                 sh 'set -x'
                 sh 'cd target'
-                sh 'java -jar project.name.jar'
+                sh 'java -jar my-app-1.0-SNAPSHOT.jar'
             }
         }    
     }
