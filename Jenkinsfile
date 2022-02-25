@@ -4,14 +4,8 @@ pipeline {
             image 'maven:3-alpine'
             args '-v /root/.m2:/root/.m2'
         }
-    }
-    environment {
-        NEXUS_VERSION = "nexus3"
-        NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "nexus.neosoft.asp"
-        NEXUS_REPOSITORY = "lab.gorepo"
-        NEXUS_CREDENTIAL_ID = "nexus-credentials"
-    }
+        }
+
     stages {
         stage('Build') {
             steps {
@@ -34,6 +28,7 @@ pipeline {
                 sh 'mvn dependency:resolve'
                 sh 'mvn jar:jar install:install help:evaluate -Dexpression=project.name'
                 
+                sh 'mvn clean deploy -Dmaven.test.skip=true'
                 
                 }
              }
