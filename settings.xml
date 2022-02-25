@@ -1,7 +1,9 @@
-<servers>
-   <server>
-      <id>lab.gorepo</id>
-      <username>jenkins-user</username>
-      <password>root</password>
-   </server>
-</servers>
+<settings>
+  <servers>
+    <server>
+      <id>nexus-snapshots</id>
+      <username>admin</username>
+      <password>password</password>
+    </server>
+  </servers>
+</settings>

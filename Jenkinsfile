@@ -9,7 +9,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                
+                sh 'cp settings.xml /root/.m2/settings.xml'
                 sh 'mvn -B package --file pom.xml'
+                
             }
         }
         stage('Test') {
