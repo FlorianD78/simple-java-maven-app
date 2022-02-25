@@ -1,6 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.mycompany.app</groupId>
   <artifactId>my-app</artifactId>
@@ -21,9 +20,43 @@
       <sonar.organization>floriand78</sonar.organization>
       <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
+  <distributionManagement>
+    <repository>
+      <uniqueVersion>false</uniqueVersion>
+      <id>internal-releases</id>
+      <name>lab.gorepo</name>
+      <url>http://nexus.neosoft.asp/repository/lab.gorepo/</url>
+    </repository>
+    <snapshotRepository>
+      <uniqueVersion>true</uniqueVersion>
+      <id>internal-snapshots</id>
+      <name>lab.gorepo</name>
+      <url>http://nexus.neosoft.asp/repository/lab.gorepo/</url>
+    </snapshotRepository>
+  </distributionManagement>
   <build>
     <pluginManagement>
       <plugins>
+        <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <version>2.5.2</version>
+            <configuration>
+                <appendAssemblyId>false</appendAssemblyId>
+                <finalName>${project.name}</finalName>
+                <descriptors>
+                    <descriptor>${basedir}/assembly.xml</descriptor>
+                </descriptors>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>create-archive</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>single</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
