@@ -23,15 +23,15 @@
   <distributionManagement>
     <repository>
       <uniqueVersion>false</uniqueVersion>
-      <id>internal-releases</id>
-      <name>lab.gorepo</name>
-      <url>http://nexus.neosoft.asp/repository/lab.gorepo/</url>
+      <id>labgorepo</id>
+      <name>labgorepo</name>
+      <url>http://nexus.neosoft.asp/repository/labgorepo/</url>
     </repository>
     <snapshotRepository>
       <uniqueVersion>true</uniqueVersion>
-      <id>internal-snapshots</id>
-      <name>lab.gorepo</name>
-      <url>http://nexus.neosoft.asp/repository/lab.gorepo/</url>
+      <id>labgorepo</id>
+      <name>labgorepo</name>
+      <url>http://nexus.neosoft.asp/repository/labgorepo/</url>
     </snapshotRepository>
   </distributionManagement>
   <build>
