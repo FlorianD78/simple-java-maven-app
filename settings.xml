@@ -1,0 +1,7 @@
+<servers>
+   <server>
+      <id>lab.gorepo</id>
+      <username>jenkins-user</username>
+      <password>root</password>
+   </server>
+</servers>
