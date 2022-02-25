@@ -34,8 +34,8 @@ pipeline {
                                        -Dpackaging=jar \
                                        -Dfile=target/my-app-1.0-SNAPSHOT.jar \
                                        -DgeneratePom=true \
-                                       -DrepositoryId=lab.gorepo \
-                                       -Durl=http://nexus.neosoft.asp/repository/lab.gorepo/'
+                                       -DrepositoryId=labgorepo \
+                                       -Durl=http://nexus.neosoft.asp/repository/labgorepo/'
                 
                 }
              }
