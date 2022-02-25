@@ -32,7 +32,7 @@ pipeline {
                                        -DartifactId=my-app \
                                        -Dversion=1.0.0 \
                                        -Dpackaging=jar \
-                                       -Dfile=my-app-1.0-SNAPSHOT.jar \
+                                       -Dfile=target/my-app-1.0-SNAPSHOT.jar \
                                        -DgeneratePom=true \
                                        -DrepositoryId=lab.gorepo \
                                        -Durl=http://nexus.neosoft.asp/repository/lab.gorepo/'
