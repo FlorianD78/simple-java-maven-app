@@ -28,14 +28,8 @@ pipeline {
                 sh 'mvn dependency:resolve'
                 sh 'mvn jar:jar install:install help:evaluate -Dexpression=project.name'
                 
-                sh 'mvn deploy:deploy-file -DgroupId=asp.repo \
-                                       -DartifactId=my-app-1.0-SNAPSHOT \
-                                       -Dversion=1.0 \
-                                       -Dpackaging=jar \
-                                       -Dfile=target/my-app-1.0-SNAPSHOT.jar \
-                                       -DgeneratePom=true \
-                                       -DrepositoryId=labgorepo \
-                                       -Durl=http://nexus.neosoft.asp/repository/labgorepo/'
+                sh 'mvn clean install'
+                sh 'mvn deploy -DskipTests -Dmaven.install.skip=true'                         
                 
                 }
              }
