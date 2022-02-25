@@ -21,29 +21,7 @@ pipeline {
                     junit 'target/surefire-reports/*.xml'
                 }
             }
-        }
-        stage('Push to nexus') {
-            steps{
-
-                sh 'mvn dependency:resolve'
-                sh 'mvn jar:jar install:install help:evaluate -Dexpression=project.name'
-                
-                sh 'mvn deploy:deploy-file -DgroupId=asp.repo \
-                                       -DartifactId=my-app \
-                                       -Dversion=1.0.0 \
-                                       -Dpackaging=jar \
-                                       -Dfile=target/my-app-1.0-SNAPSHOT.jar \
-                                       -DgeneratePom=true \
-                                       -DrepositoryId=lab.gorepo \
-                                       -Durl=http://nexus.neosoft.asp/repository/lab.gorepo/'
-                
-                }
-             }
-        stage('Deploy'){
-            steps{
-                sh 'java -jar target/my-app-1.0-SNAPSHOT.jar'
-            }
-        }
+        }  
     }
 }
 
