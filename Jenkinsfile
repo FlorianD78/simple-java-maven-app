@@ -4,7 +4,7 @@ pipeline {
             image 'maven:3-alpine'
             args '-v /root/.m2:/root/.m2'
         }
-        }
+    }
 
     stages {
         stage('Build') {
@@ -32,11 +32,12 @@ pipeline {
                 
                 }
              }
-        }
         stage('Deploy'){
             steps{
                 sh 'java -jar target/my-app-1.0-SNAPSHOT.jar'
             }
-        }    
+        }
     }
 }
+
+    
